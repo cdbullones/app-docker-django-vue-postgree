@@ -32,12 +32,13 @@ export default {
     const data = ref(null);
     const loading = ref(true);
     const error = ref(null);
+    const url = 'https://django-cdbullones.cloud.okteto.net' + '/api/games/';
 
     function fetchData() {
         loading.value = true;
         // I prefer to use fetch
         // you can use use axios as an alternative
-        return fetch('http://localhost:8000/api/games/', {
+        return fetch(url, {
             method: 'get',
             headers: {
             'content-type': 'application/json'
