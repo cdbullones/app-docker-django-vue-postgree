@@ -21,7 +21,7 @@ services:
       context: ./backend
     volumes:
       - .:/code
-    replicas: 2
+    replicas: 1
     ports:
       - 8000:8000
     depends_on:
