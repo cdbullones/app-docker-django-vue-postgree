@@ -3,11 +3,13 @@ services:
   db:
     image: postgres
     ports:
-      - 5432
+      - 5432:5432
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
     resources:
       cpu: 100m
       memory: 128Mi
@@ -15,10 +17,17 @@ services:
   backend:
     public: true
     image: okteto.dev/app-docker-django-vue-postgree-django:okteto
-    build: .
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
     replicas: 2
     ports:
-      - 8000
+      - 8000:8080
+    depends_on:
+      db:
+        condition: service_healthy
     resources:
       cpu: 100m
       memory: 128Mi
@@ -26,10 +35,17 @@ services:
   frontend:
     public: true
     image: okteto.dev/app-docker-django-vue-postgree-vue:okteto
-    build: .
-    replicas: 4
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+    replicas: 2
     ports:
-      - 8080
+      - 8080:8080
+    depends_on:
+      django:
+        condition: service_started
     resources:
       cpu: 100m
       memory: 128Mi
