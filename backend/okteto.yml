@@ -1,0 +1,69 @@
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "8"
+    dev.okteto.com/last-built: 2021-08-27T14:13:11
+    dev.okteto.com/last-updated: 2021-08-27T14:13:21
+  creationTimestamp: "2021-08-26T02:43:06Z"
+  generation: 10
+  labels:
+    dev.okteto.com/deployed-by: 6c6574a0-104d-4655-a7ad-25ad80eac5b4
+    stack.okteto.com/name: app-docker-django-vue-postgree
+    stack.okteto.com/service: django
+  name: django
+  namespace: cdbullones
+  resourceVersion: "247481117"
+  selfLink: /apis/apps/v1/namespaces/cdbullones/deployments/django
+  uid: 6f89724f-903d-4812-a630-5ea8709c4007
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 4
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      stack.okteto.com/name: app-docker-django-vue-postgree
+      stack.okteto.com/service: django
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        dev.okteto.com/last-built: 2021-08-27T14:13:11
+      creationTimestamp: null
+      labels:
+        stack.okteto.com/name: app-docker-django-vue-postgree
+        stack.okteto.com/service: django
+    spec:
+      containers:
+      - image: okteto.dev/app-docker-django-vue-postgree-django:okteto
+        imagePullPolicy: IfNotPresent
+        name: django
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 0
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2021-08-27T14:13:43Z"
+    lastUpdateTime: "2021-08-27T14:13:43Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2021-08-26T02:43:06Z"
+    lastUpdateTime: "2021-08-27T14:13:43Z"
+    message: ReplicaSet "django-64b6bf6b77" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 10
+  readyReplicas: 1
+  replicas: 4
+  updatedReplicas: 1
