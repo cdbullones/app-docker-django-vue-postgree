@@ -38,12 +38,12 @@ services:
       context: ./frontend
     volumes:
       - ./frontend/src:/app/src
-    replicas: 2
+    replicas: 1
     ports:
-      - 3000:3000
+      - 8080:8080
     depends_on:
       backend:
         condition: service_started
     resources:
       cpu: 100m
-      memory: 64Mi
+      memory: 128Mi
