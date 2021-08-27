@@ -40,7 +40,7 @@ services:
       - ./frontend/src:/app/src
     replicas: 2
     ports:
-      - 8080:8080
+      - 3000:3000
     depends_on:
       backend:
         condition: service_started
