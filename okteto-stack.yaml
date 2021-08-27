@@ -8,8 +8,6 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
     resources:
       cpu: 100m
       memory: 128Mi
@@ -43,5 +41,5 @@ services:
     depends_on:
       - backend
     resources:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 500m
+      memory: 64Mi
