@@ -1,0 +1,35 @@
+name: app-django-vue
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    resources:
+      cpu: 100m
+      memory: 128Mi
+  
+  backend:
+    public: true
+    image: okteto.dev/app-docker-django-vue-postgree-django:okteto
+    build: .
+    replicas: 2
+    ports:
+      - 8000
+    resources:
+      cpu: 100m
+      memory: 128Mi
+    
+  frontend:
+    public: true
+    image: okteto.dev/app-docker-django-vue-postgree-vue:okteto
+    build: .
+    replicas: 4
+    ports:
+      - 8080
+    resources:
+      cpu: 100m
+      memory: 128Mi
