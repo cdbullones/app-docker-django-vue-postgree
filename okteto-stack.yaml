@@ -42,4 +42,4 @@ services:
       - backend
     resources:
       cpu: 500m
-      memory: 64Mi
+      memory: 128Mi
