@@ -19,12 +19,11 @@ services:
     image: okteto.dev/app-docker-django-vue-postgree-django:okteto
     build: 
       context: ./backend
-      dockerfile: Dockerfile
     volumes:
       - .:/code
     replicas: 2
     ports:
-      - 8000:8080
+      - 8000:8000
     depends_on:
       db:
         condition: service_healthy
@@ -37,7 +36,6 @@ services:
     image: okteto.dev/app-docker-django-vue-postgree-vue:okteto
     build:
       context: ./frontend
-      dockerfile: Dockerfile
     volumes:
       - ./frontend/src:/app/src
     replicas: 2
