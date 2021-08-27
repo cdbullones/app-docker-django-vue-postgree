@@ -28,8 +28,8 @@ services:
       db:
         condition: service_healthy
     resources:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 250m
+      memory: 64Mi
     
   frontend:
     public: true
@@ -45,5 +45,5 @@ services:
       backend:
         condition: service_started
     resources:
-      cpu: 100m
+      cpu: 250m
       memory: 64Mi
