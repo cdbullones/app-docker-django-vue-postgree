@@ -25,11 +25,10 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     resources:
       cpu: 100m
-      memory: 64Mi
+      memory: 128Mi
     
   frontend:
     public: true
@@ -42,8 +41,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      backend:
-        condition: service_started
+      - backend
     resources:
       cpu: 100m
-      memory: 64Mi
+      memory: 128Mi
