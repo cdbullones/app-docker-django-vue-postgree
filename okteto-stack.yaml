@@ -44,7 +44,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      django:
+      backend:
         condition: service_started
     resources:
       cpu: 100m
