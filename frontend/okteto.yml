@@ -1,11 +1,10 @@
-name: backend
+name: frontend
 autocreate: true
-image: okteto/python:3
+image: okteto/node:14
 command: bash
 sync:
 - .:/usr/src/app
 forward:
-- 8080:8080
-reverse:
-- 9000:9000
+- 9229:9229
+- 3000:3000
 persistentVolume: {}
