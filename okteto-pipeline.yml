@@ -2,3 +2,5 @@ type: stack
 icon: https://apps.okteto.com/movies/icon.png
 deploy:
 - okteto stack deploy --build -f docker-compose.yml
+devs:
+  - backend/okteto.yml
