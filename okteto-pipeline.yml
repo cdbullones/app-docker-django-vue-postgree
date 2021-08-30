@@ -1,7 +1,0 @@
-icon: https://apps.okteto.com/movies/icon.png
-deploy:
-  - okteto build -t okteto.dev/app-docker-django-vue-postgree-django:okteto backend
-  - okteto build -t okteto.dev/app-docker-django-vue-postgree-vue:okteto frontend
-devs:
-  - backend/okteto.yml
-  - frontend/okteto.yml
